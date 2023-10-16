@@ -6,6 +6,9 @@
 # Output: W_sort, W_order
 
 preprocess_W_func <- function(W){    
+  # to avoid numerical error such that there still a tie after applying this function.
+  W = round(W, 10)
+  
   W_order <- order(abs(W), decreasing=TRUE)
   W_sort <- W[W_order]
   # delete zeros

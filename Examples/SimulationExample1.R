@@ -24,7 +24,7 @@ beta = amplitude * (1:p %in% nonzero) / sqrt(n)
 X = matrix(rnorm(n*p),n) %*% chol(Sigma)
 y = X %*% beta + rnorm(n)
 
-######### get original W using knockoff method
+######### get original W using knockoff method (one can use different ways to get W. Below is just one option for illustration purpose)
 W_ori <- knockoff.filter(X, y, knockoffs = create.fixed, statistic = stat.glmnet_lambdasmax, fdr=0.1)$statistic
 W_list <- preprocess_W_func(W_ori)  # Get the preprocessed W: |W_1|>...>|W_m|>0
 W <- W_list[[1]]
